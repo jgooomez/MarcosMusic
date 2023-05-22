@@ -1,104 +1,130 @@
-create table listaReproduccion (
-    codigo int not null,
-    fechaCreacion date,
-    nombre varchar(100) ,
-    duracionTotal int ,
-    imagen varchar(100),
-    numSeguidores int,
-    fechaContenido date,
-
-    CONSTRAINT pk_listaReproduccion PRIMARY KEY (codigo)
+CREATE TABLE Categoria (
+    codigo INT PRIMARY KEY,
+    nombre VARCHAR(100),
+    descripcion VARCHAR(100)
 );
 
-create table categoria (
-    codigo int not null,
-    nombre varchar(100),
-    descripcion varchar(100),
-
-    CONSTRAINT pk_catergoria PRIMARY KEY (codigo)
+CREATE TABLE Contenido (
+    codigo INT PRIMARY KEY,
+    titulo VARCHAR(100),
+    lugarGrabacion VARCHAR(100),
+    valoracion DECIMAL(3, 2),
+    numeroReproducciones INT,
+    album VARCHAR(100),
+    anyoLanzamiento INT
 );
 
-create table contenido (
-    codigo int not null,
-    titulo varchar(100),
-    lugarGrabacion varchar(100),
-    valoracion int,
-    numeroReproducciones int,
-    album varchar(100),
-    anyoLanzamiento date,
-
-    CONSTRAINT pk_contenido PRIMARY KEY (codigo)
+CREATE TABLE Artista (
+    id INT PRIMARY KEY,
+    nombre VARCHAR(100),
+    fechaInicio DATE,
+    nacionalidad VARCHAR(100),
+    numPremios INT,
+    generoMusical VARCHAR(100)
 );
 
-create table usuario (
-    idUsuario int not null,
-    nacionalidad varchar(100),
-    nombre varchar(100),
-    fotoPerfil varchar(100),
-    edad int,
-    numSeguidores int,
-
-    CONSTRAINT pk_usuario PRIMARY KEY (idUsuario)
+CREATE TABLE Concierto (
+    codigo INT PRIMARY KEY,
+    lugar VARCHAR(100),
+    fecha DATE,
+    ciudad VARCHAR(100),
+    pais VARCHAR(100),
+    capacidad INT,
+    dineroRecaudado DECIMAL(10, 2)
 );
 
-create table reproduccion (
-    id int not null,
-    duracion int,
-    codigoContenido int,
-    fechaReproduccion date,
-    hora datetime,
-    valoracion int,
-    idUsuario int,
-
-    CONSTRAINT pk_reproduccion PRIMARY KEY (id)
+CREATE TABLE Usuario (
+    idUsuario INT PRIMARY KEY,
+    nacionalidad VARCHAR(100),
+    nombre VARCHAR(100),
+    fotoPerfil VARCHAR(100),
+    edad INT,
+    numSeguidores INT
 );
 
-create table subscripcion (
-    id int not null,
-    tipo varchar(100),
-    precio money,
-
-    CONSTRAINT pk_subscripcion PRIMARY KEY (id)
+CREATE TABLE Reproduccion (
+    id INT PRIMARY KEY,
+    duracion INT,
+    codigoContenido INT,
+    fechaReproduccion DATE,
+    hora TIME,
+    valoracion INT,
+    idUsuario INT,
+    FOREIGN KEY (codigoContenido) REFERENCES Contenido(codigo),
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
 );
 
-create table tarjeta (
-    numeroTarjeta int not null,
-    telefono int,
-    tipo varchar(100),
-    nombreTitular varchar(100),
-    cvv int,
-    caducidad date,
-
-    CONSTRAINT pk_tarjeta PRIMARY KEY (numeroTarjeta)
+CREATE TABLE Subscripcion (
+    id INT PRIMARY KEY,
+    tipo VARCHAR(100),
+    precio DECIMAL(5, 2)
 );
 
-create table concierto (
-    codigo int not null,
-    lugar varchar(100),
-    fecha date,
-    ciudad varchar(100),
-    dineroRecaudado money,
-    pais varchar(100), 
-
-    CONSTRAINT pk_concierto PRIMARY KEY (codigo)
+CREATE TABLE Tarjeta (
+    numeroTarjeta INT PRIMARY KEY,
+    telefono INT,
+    tipo VARCHAR(100),
+    nombreTitular VARCHAR(100),
+    cvv INT,
+    caducidad DATE,
+    idUsuario INT,
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
 );
 
-create table artista (
-    id int not null,
-    nombre varchar(100),
-    fechaInicio date,
-    nacionalidad varchar(100),
-    numPremios int,
-    generoMusical varchar(100),
-
-    CONSTRAINT pk_artista PRIMARY KEY (id)
+CREATE TABLE ListaReproduccion (
+    codigo INT PRIMARY KEY,
+    fechaCreacion DATE,
+    nombre VARCHAR(100),
+    duracionTotal INT,
+    imagen VARCHAR(100),
+    numSeguidores INT
 );
 
-/*Tabla a revisar, pocos atributos para crear una primary key con sentido*/
-create table cuentaPrincipal (
-    telefono int not null,
-    metodoPago varchar(100),
-
-    CONSTRAINT pk_cuentaPrincipal PRIMARY KEY (telefono)
+CREATE TABLE ListaCanciones (
+    codigoLista INT,
+    codigoCancion INT,
+    fechaAgregado DATE,
+    FOREIGN KEY (codigoLista) REFERENCES ListaReproduccion(codigo),
+    FOREIGN KEY (codigoCancion) REFERENCES Contenido(codigo),
+    PRIMARY KEY (codigoLista, codigoCancion)
 );
 
+CREATE TABLE ListaPodcasts (
+    codigoLista INT,
+    codigoPodcast INT,
+    fechaAgregado DATE,
+    FOREIGN KEY (codigoLista) REFERENCES ListaReproduccion(codigo),
+    FOREIGN KEY (codigoPodcast) REFERENCES Contenido(codigo),
+    PRIMARY KEY (codigoLista, codigoPodcast)
+);
+
+CREATE TABLE ConciertoArtista (
+    codigoConcierto INT,
+    idArtista INT,
+    FOREIGN KEY (codigoConcierto) REFERENCES Concierto(codigo),
+    FOREIGN KEY (idArtista) REFERENCES Artista(id),
+    PRIMARY KEY (codigoConcierto, idArtista)
+);
+
+CREATE TABLE ArtistaContenido (
+    idArtista INT,
+    codigoContenido INT,
+    FOREIGN KEY (idArtista) REFERENCES Artista(id),
+    FOREIGN KEY (codigoContenido) REFERENCES Contenido(codigo),
+    PRIMARY KEY (idArtista, codigoContenido)
+);
+
+CREATE TABLE SubscripcionUsuario (
+    idSubscripcion INT,
+    idUsuario INT,
+    FOREIGN KEY (idSubscripcion) REFERENCES Subscripcion(id),
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario),
+    PRIMARY KEY (idSubscripcion, idUsuario)
+);
+
+CREATE TABLE CuentaPrincipal (
+    telefono INT PRIMARY KEY,
+    metodoPago VARCHAR(100),
+    idUsuario INT,
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
+);
