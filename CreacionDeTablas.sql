@@ -81,7 +81,7 @@ CREATE TABLE ListaReproduccion (
 );
 
 CREATE TABLE ListaCanciones (
-    codigoLista,
+    codigoLista INT,
     codigoCancion INT,
     fechaAgregado DATE,
     FOREIGN KEY (codigoLista) REFERENCES ListaReproduccion(codigo),
