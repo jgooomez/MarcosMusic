@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-05-24T10:10:07.452Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="RLR8ofPjUH_7s-V_s0oc" version="21.3.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-05-24T10:10:33.801Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="IDRx2xQbgHZsLCO89Gy_" version="21.3.2" type="github">
   <diagram name="Página-1" id="-W5awVbawrHDaR3Zstrv">
     <mxGraphModel dx="924" dy="461" grid="1" gridSize="6" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#CCCCCC" math="0" shadow="1">
       <root>
@@ -95,6 +95,9 @@
         </mxCell>
         <mxCell id="GsAVDETKxD5Qwuyp5WPq-44" value="Ver usuarios" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E6E6E6;" vertex="1" parent="GsAVDETKxD5Qwuyp5WPq-36">
           <mxGeometry x="116" y="124" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="GsAVDETKxD5Qwuyp5WPq-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GsAVDETKxD5Qwuyp5WPq-10" target="GsAVDETKxD5Qwuyp5WPq-36">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
