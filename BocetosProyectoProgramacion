@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-05-24T16:40:37.152Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="c8P6E5EKrPIDkQ_p6x4J" version="21.3.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-05-24T16:48:26.338Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="D1CI3B3DHfNiocRjtXYA" version="21.3.2" type="github">
   <diagram name="Página-1" id="-W5awVbawrHDaR3Zstrv">
-    <mxGraphModel dx="2739" dy="2164" grid="1" gridSize="6" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#CCCCCC" math="0" shadow="1">
+    <mxGraphModel dx="1851" dy="1702" grid="1" gridSize="6" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#CCCCCC" math="0" shadow="1">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -92,21 +92,21 @@
         <mxCell id="GsAVDETKxD5Qwuyp5WPq-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="GsAVDETKxD5Qwuyp5WPq-36" target="GsAVDETKxD5Qwuyp5WPq-46" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="280" y="612" />
-              <mxPoint x="192" y="612" />
+              <mxPoint x="280" y="630" />
+              <mxPoint x="192" y="630" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="GsAVDETKxD5Qwuyp5WPq-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.453;entryY=-0.005;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="GsAVDETKxD5Qwuyp5WPq-36" target="GsAVDETKxD5Qwuyp5WPq-52" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="288" y="612" />
-              <mxPoint x="516" y="612" />
+              <mxPoint x="288" y="630" />
+              <mxPoint x="517" y="630" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="GsAVDETKxD5Qwuyp5WPq-36" value="Administrar Tarjetas" style="swimlane;whiteSpace=wrap;html=1;fillColor=#FFFFFF;gradientColor=#b3b3b3;strokeColor=#666666;shadow=1;glass=0;" parent="1" vertex="1">
-          <mxGeometry x="190" y="416" width="200" height="154" as="geometry" />
+          <mxGeometry x="190" y="416" width="200" height="196" as="geometry" />
         </mxCell>
         <mxCell id="GsAVDETKxD5Qwuyp5WPq-37" value="Id del usuario:" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;shadow=1;" parent="GsAVDETKxD5Qwuyp5WPq-36" vertex="1">
           <mxGeometry x="-5" y="27" width="100" height="30" as="geometry" />
@@ -131,6 +131,9 @@
         </mxCell>
         <mxCell id="GsAVDETKxD5Qwuyp5WPq-44" value="Añadir" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E6E6E6;shadow=1;" parent="GsAVDETKxD5Qwuyp5WPq-36" vertex="1">
           <mxGeometry x="116" y="124" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="OfBNz66dFsl0MPrhaeHC-72" value="Volver atrás" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E6E6E6;shadow=1;" vertex="1" parent="GsAVDETKxD5Qwuyp5WPq-36">
+          <mxGeometry x="16" y="159" width="168" height="20" as="geometry" />
         </mxCell>
         <mxCell id="GsAVDETKxD5Qwuyp5WPq-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" target="GsAVDETKxD5Qwuyp5WPq-36" edge="1">
           <mxGeometry relative="1" as="geometry">
