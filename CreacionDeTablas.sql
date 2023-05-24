@@ -1,11 +1,11 @@
 CREATE TABLE Categoria (
-    codigo INT PRIMARY KEY,
+    codigo INT PRIMARY KEY IDENTITY (1,1),
     nombre VARCHAR(100),
     descripcion VARCHAR(100)
 );
 
 CREATE TABLE Contenido (
-    codigo INT PRIMARY KEY,
+    codigo INT PRIMARY KEY IDENTITY (1,1),
     titulo VARCHAR(100),
     lugarGrabacion VARCHAR(100),
     valoracion DECIMAL(3, 2),
@@ -15,7 +15,7 @@ CREATE TABLE Contenido (
 );
 
 CREATE TABLE Artista (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY IDENTITY (1,1),
     nombre VARCHAR(100),
     fechaInicio DATE,
     nacionalidad VARCHAR(100),
@@ -24,7 +24,7 @@ CREATE TABLE Artista (
 );
 
 CREATE TABLE Concierto (
-    codigo INT PRIMARY KEY,
+    codigo INT PRIMARY KEY IDENTITY (1,1),
     lugar VARCHAR(100),
     fecha DATE,
     ciudad VARCHAR(100),
@@ -34,7 +34,7 @@ CREATE TABLE Concierto (
 );
 
 CREATE TABLE Usuario (
-    idUsuario INT PRIMARY KEY,
+    idUsuario INT PRIMARY KEY IDENTITY (1,1),
     nacionalidad VARCHAR(100),
     nombre VARCHAR(100),
     fotoPerfil VARCHAR(100),
@@ -43,7 +43,7 @@ CREATE TABLE Usuario (
 );
 
 CREATE TABLE Reproduccion (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY IDENTITY (1,1),
     duracion INT,
     codigoContenido INT,
     fechaReproduccion DATE,
@@ -55,7 +55,7 @@ CREATE TABLE Reproduccion (
 );
 
 CREATE TABLE Subscripcion (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY IDENTITY (1,1),
     tipo VARCHAR(100),
     precio DECIMAL(5, 2)
 );
@@ -72,7 +72,7 @@ CREATE TABLE Tarjeta (
 );
 
 CREATE TABLE ListaReproduccion (
-    codigo INT PRIMARY KEY,
+    codigo INT PRIMARY KEY IDENTITY (1,1),
     fechaCreacion DATE,
     nombre VARCHAR(100),
     duracionTotal INT,
@@ -81,7 +81,7 @@ CREATE TABLE ListaReproduccion (
 );
 
 CREATE TABLE ListaCanciones (
-    codigoLista INT,
+    codigoLista,
     codigoCancion INT,
     fechaAgregado DATE,
     FOREIGN KEY (codigoLista) REFERENCES ListaReproduccion(codigo),
