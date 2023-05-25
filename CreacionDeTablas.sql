@@ -128,3 +128,25 @@ CREATE TABLE CuentaPrincipal (
     idUsuario INT,
     FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
 );
+
+
+
+/* NUEVAS TABLAS */
+
+CREATE TABLE Departamento (
+    idDepartamento int,
+    nombre nvarchar(50),
+    fechaCreacion DATE,
+    NombreEncargado nvarchar(50),
+    numTrabajadores int,
+    numSubDpto int
+);
+
+CREATE TABLE Empleado (
+    idEmpleado int,
+    nombre nvarchar(50),
+    edad int,
+    nacionalidad nvarchar(50),
+    fechaIncorporacion DATE,
+    departamento nvarchar(50)
+);
