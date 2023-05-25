@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-05-25T10:13:10.920Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="4rsC-3qPGKGQeY9LN_Dn" version="21.3.3" type="github">
+<mxfile host="app.diagrams.net" modified="2023-05-25T10:13:44.638Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="CdtKsAzLiTrMoYar_bLv" version="21.3.3" type="github">
   <diagram name="Página-1" id="-W5awVbawrHDaR3Zstrv">
-    <mxGraphModel dx="1973" dy="1784" grid="1" gridSize="6" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#CCCCCC" math="0" shadow="1">
+    <mxGraphModel dx="2464" dy="2048" grid="1" gridSize="6" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#CCCCCC" math="0" shadow="1">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -18,6 +18,14 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="276" y="-215" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xArST6GK2_UD0sn6zNJ5-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GsAVDETKxD5Qwuyp5WPq-2" target="GsAVDETKxD5Qwuyp5WPq-11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="102" y="230" />
+              <mxPoint x="102" y="-47" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -46,7 +54,7 @@
           <mxGeometry x="108" y="152" width="82" height="20" as="geometry" />
         </mxCell>
         <mxCell id="GsAVDETKxD5Qwuyp5WPq-11" value="Crear Usuarios" style="swimlane;whiteSpace=wrap;html=1;fillColor=#E6E6E6;strokeColor=default;gradientColor=#b3b3b3;rounded=0;shadow=1;" parent="1" vertex="1">
-          <mxGeometry x="-354" y="-258" width="200" height="307" as="geometry" />
+          <mxGeometry x="-366" y="-200.75" width="200" height="307" as="geometry" />
         </mxCell>
         <mxCell id="GsAVDETKxD5Qwuyp5WPq-12" value="&lt;font color=&quot;#808080&quot;&gt;Id del usuario:&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="GsAVDETKxD5Qwuyp5WPq-11" vertex="1">
           <mxGeometry x="-6" y="30" width="102" height="30" as="geometry" />
