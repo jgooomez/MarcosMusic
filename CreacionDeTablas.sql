@@ -150,3 +150,60 @@ CREATE TABLE Empleado (
     fechaIncorporacion DATE,
     departamento nvarchar(50)
 );
+
+/*Checks*/
+
+-- Check para la tabla Contenido: asegura que la valoración esté dentro del rango válido (entre 0 y 10)
+ALTER TABLE Contenido
+ADD CONSTRAINT CHK_Valoracion
+CHECK (valoracion >= 0 AND valoracion <= 10);
+
+-- Check para la tabla Usuario: asegura que la edad sea un valor positivo
+ALTER TABLE Usuario
+ADD CONSTRAINT CHK_EdadPositiva
+CHECK (edad >= 0);
+
+-- Check para la tabla Reproduccion: asegura que la duración sea un valor positivo
+ALTER TABLE Reproduccion
+ADD CONSTRAINT CHK_DuracionPositiva
+CHECK (duracion >= 0);
+
+-- Check para la tabla Subscripcion: asegura que el precio sea un valor positivo
+ALTER TABLE Subscripcion
+ADD CONSTRAINT CHK_PrecioPositivo
+CHECK (precio >= 0);
+
+-- Check para la tabla Tarjeta: asegura que el número de tarjeta tenga 16 dígitos
+ALTER TABLE Tarjeta
+ADD CONSTRAINT CHK_LongitudNumeroTarjeta
+CHECK (LEN(numeroTarjeta) = 16);
+
+-- Check para la tabla Departamento: asegura que el número de trabajadores.
+ALTER TABLE Departamento
+ADD CONSTRAINT CHK_NumTrabajadoresPositivo
+CHECK (numTrabajadores >= 0);
+
+-- Check para la tabla Artista: asegura que el número de premios sea un valor no negativo
+ALTER TABLE Artista
+ADD CONSTRAINT CHK_NumPremiosNoNegativo
+CHECK (numPremios >= 0);
+
+-- Check para la tabla ListaReproduccion: asegura que la duración total sea un valor positivo
+ALTER TABLE ListaReproduccion
+ADD CONSTRAINT CHK_DuracionTotalPositiva
+CHECK (duracionTotal >= 0);
+
+-- Check para la tabla Empleado: asegura que la edad sea mayor o igual a 18
+ALTER TABLE Empleado
+ADD CONSTRAINT CHK_EdadMayor18
+CHECK (edad >= 18);
+
+-- Check para la tabla Concierto: asegura que la capacidad sea un valor positivo
+ALTER TABLE Concierto
+ADD CONSTRAINT CHK_CapacidadPositiva
+CHECK (capacidad > 0);
+
+-- Check para la tabla SubscripcionUsuario: asegura que el idSubscripcion sea mayor a 0
+ALTER TABLE SubscripcionUsuario
+ADD CONSTRAINT CHK_IdSubscripcionPositivo
+CHECK (idSubscripcion > 0);
