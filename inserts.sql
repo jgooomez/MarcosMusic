@@ -308,3 +308,34 @@ VALUES
 (5555555555, 'Visa', 3),
 (9999999999, 'Mastercard', 4),
 (1111111111, 'Visa', 5);
+
+-- -- -- NUEVOS INSERTS -- -- --
+INSERT INTO Departamento (idDepartamento, nombre, fechaCreacion, NombreEncargado, numTrabajadores, numSubDpto)
+VALUES
+    (1, 'RRHH', '2020-01-01', 'Encargado A', 10, 2),
+    (2, 'Recursos', '2019-05-15', 'Encargado B', 15, 3),
+    (3, 'I+D', '2021-03-10', 'Encargado C', 8, 1),
+    (4, 'Marketing', '2018-11-30', 'Encargado D', 12, 2);
+
+INSERT INTO Empleado (idEmpleado, nombre, edad, nacionalidad, fechaIncorporacion, departamento)
+VALUES
+(1, 'John Smith', 30, 'Estados Unidos', '2019-02-28', 'RRHH'),
+(2, 'Emma Johnson', 28, 'Canadá', '2020-07-10', 'RRHH'),
+(3, 'Carlos López', 35, 'México', '2021-01-15', 'Recursos'),
+(4, 'Sophia Martinez', 32, 'España', '2018-09-20', 'Recursos'),
+(5, 'Liam Anderson', 27, 'Reino Unido', '2022-03-05', 'I+D'),
+(6, 'Isabella Thompson', 31, 'Australia', '2019-06-12', 'I+D'),
+(7, 'David Garcia', 29, 'México', '2020-11-25', 'Marketing'),
+(8, 'Mia Robinson', 33, 'Estados Unidos', '2021-04-30', 'Marketing'),
+(9, 'Daniel Lee', 26, 'Corea del Sur', '2018-10-15', 'RRHH'),
+(10, 'Olivia Kim', 30, 'Corea del Sur', '2022-02-01', 'RRHH'),
+(11, 'Alexander Chen', 28, 'China', '2019-07-20', 'Recursos'),
+(12, 'Emily Nguyen', 35, 'Vietnam', '2020-12-10', 'Recursos'),
+(13, 'Michael Ahmed', 32, 'Egipto', '2021-05-15', 'I+D'),
+(14, 'Sofia Ramos', 27, 'Brasil', '2018-11-28', 'I+D'),
+(15, 'Benjamin Silva', 31, 'Chile', '2022-04-05', 'Marketing'),
+(16, 'Ava Costa', 29, 'Portugal', '2019-09-18', 'Marketing'),
+(17, 'James Patel', 33, 'India', '2020-02-25', 'RRHH'),
+(18, 'Emma Kim', 26, 'Corea del Sur', '2018-12-05', 'RRHH'),
+(19, 'Lucas Santos', 30, 'Brasil', '2021-01-10', 'Recursos'),
+(20, 'Sophia Yin', 28, 'China', '2019-06-20', 'Recursos');
