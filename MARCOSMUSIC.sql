@@ -543,10 +543,11 @@ VALUES
 -- Departamento
 INSERT INTO Departamento (idDepartamento, nombre, fechaCreacion, NombreEncargado, numTrabajadores, numSubDpto)
 VALUES
-    (1, 'RRHH', '2020-01-01', 'Encargado A', 10, 2),
-    (2, 'Recursos', '2019-05-15', 'Encargado B', 15, 3),
-    (3, 'I+D', '2021-03-10', 'Encargado C', 8, 1),
-    (4, 'Marketing', '2018-11-30', 'Encargado D', 12, 2);
+    (1, 'Atencion al Cliente', '2020-01-01', 'Encargado A', 10, 2),
+    (2, 'Sonido', '2019-05-15', 'Encargado B', 15, 3),
+    (3, 'Video', '2021-03-10', 'Encargado C', 8, 1),
+    (4, 'Redes sociales', '2018-11-30', 'Encargado D', 12, 2),
+    (5, 'Diseño', '2023-06-01', 'Encargado E', 20, 3);
 
 -- Empleado
 INSERT INTO Empleado (idEmpleado, nombre, edad, nacionalidad, fechaIncorporacion, idDepartamento)
@@ -559,15 +560,15 @@ VALUES
     (6, 'Isabella Thompson', 31, 'Australia', '2019-06-12', 3),
     (7, 'David Garcia', 29, 'México', '2020-11-25', 4),
     (8, 'Mia Robinson', 33, 'Estados Unidos', '2021-04-30', 4),
-    (9, 'Daniel Lee', 26, 'Corea del Sur', '2018-10-15', 1),
-    (10, 'Olivia Kim', 30, 'Corea del Sur', '2022-02-01', 1),
-    (11, 'Alexander Chen', 28, 'China', '2019-07-20', 2),
-    (12, 'Emily Nguyen', 35, 'Vietnam', '2020-12-10', 2),
-    (13, 'Michael Ahmed', 32, 'Egipto', '2021-05-15', 3),
-    (14, 'Sofia Ramos', 27, 'Brasil', '2018-11-28', 3),
-    (15, 'Benjamin Silva', 31, 'Chile', '2022-04-05', 4),
-    (16, 'Ava Costa', 29, 'Portugal', '2019-09-18', 4),
-    (17, 'James Patel', 33, 'India', '2020-02-25', 1),
-    (18, 'Emma Kim', 26, 'Corea del Sur', '2018-12-05', 1),
-    (19, 'Lucas Santos', 30, 'Brasil', '2021-01-10', 2),
-    (20, 'Sophia Yin', 28, 'China', '2019-06-20', 2);
+    (9, 'Daniel Lee', 26, 'Corea del Sur', '2018-10-15', 5),
+    (10, 'Olivia Kim', 30, 'Corea del Sur', '2022-02-01', 5),
+    (11, 'Alexander Chen', 28, 'China', '2019-07-20', 1),
+    (12, 'Emily Nguyen', 35, 'Vietnam', '2020-12-10', 1),
+    (13, 'Michael Ahmed', 32, 'Egipto', '2021-05-15', 2),
+    (14, 'Sofia Ramos', 27, 'Brasil', '2018-11-28', 2),
+    (15, 'Benjamin Silva', 31, 'Chile', '2022-04-05', 3),
+    (16, 'Ava Costa', 29, 'Portugal', '2019-09-18', 3),
+    (17, 'James Patel', 33, 'India', '2020-02-25', 4),
+    (18, 'Emma Kim', 26, 'Corea del Sur', '2018-12-05', 4),
+    (19, 'Lucas Santos', 30, 'Brasil', '2021-01-10', 5),
+    (20, 'Sophia Yin', 28, 'China', '2019-06-20', 5);
