@@ -148,7 +148,7 @@ CREATE TABLE CuentaPrincipal (
 /* NUEVAS TABLAS */
 
 CREATE TABLE Departamento (
-    idDepartamento int,
+    idDepartamento int PRIMARY KEY,
     nombre nvarchar(50),
     fechaCreacion DATE,
     NombreEncargado nvarchar(50),
@@ -157,13 +157,15 @@ CREATE TABLE Departamento (
 );
 
 CREATE TABLE Empleado (
-    idEmpleado int,
+    idEmpleado int PRIMARY KEY,
     nombre nvarchar(50),
     edad int,
     nacionalidad nvarchar(50),
     fechaIncorporacion DATE,
-    departamento nvarchar(50)
+    idDepartamento int,
+    FOREIGN KEY (idDepartamento) REFERENCES Departamento(idDepartamento)
 );
+
 
 /*Checks*/
 
