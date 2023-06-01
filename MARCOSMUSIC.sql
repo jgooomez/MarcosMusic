@@ -549,7 +549,7 @@ VALUES
     (4, 'Marketing', '2018-11-30', 'Encargado D', 12, 2);
 
 -- Empleado
-INSERT INTO Empleado (idEmpleado, nombre, edad, nacionalidad, fechaIncorporacion, departamento)
+INSERT INTO Empleado (idEmpleado, nombre, edad, nacionalidad, fechaIncorporacion, idDepartamento)
 VALUES
     (1, 'John Smith', 30, 'Estados Unidos', '2019-02-28', 1),
     (2, 'Emma Johnson', 28, 'Canadá', '2020-07-10', 1),
