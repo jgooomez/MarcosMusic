@@ -189,3 +189,30 @@ END
 
 EXEC ObtenerContenidoPorCategoria @codigoCategoria = 1
 
+--Nuevos Procedmientos
+--devuelve tarjeta pasándole el usuario
+
+create procedure devuelveTarjetaUsuario @idUsuario int
+as
+select *
+from Tarjeta
+where Tarjeta.idUsuario = @idUsuario
+
+exec dbo.devuelveTarjetaUsuario
+
+--devuelve el numero de dinero recaudado en los conciertos pasandole un lugar
+
+create function sumaDineroRecaudadoPorPais (@paisConcierto varchar)
+returns
+decimal (10,2)
+begin
+	declare @totalDineroRecaudado decimal (10,2)
+	select @totalDineroRecaudado = sum(Concierto.dineroRecaudado), 	Concierto.pais
+	from Concierto
+	where Concierto.pais = @paisConcierto
+	group by Concierto.pais
+
+return @totalDineroRecaudado
+
+select dbo.sumaDineroRecaudadoPorPais from Concierto
+
