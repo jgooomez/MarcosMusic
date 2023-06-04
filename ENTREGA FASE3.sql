@@ -1,3 +1,49 @@
+-- Verificar si la tabla de histórico de reproducciones existe, de lo contrario, crearla
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[HistoricoReproducciones]'))
+BEGIN
+    CREATE TABLE [dbo].[HistoricoReproducciones] (
+        id INT PRIMARY KEY,
+        duracion INT,
+        codigoContenido INT,
+        fechaReproduccion DATE,
+        hora TIME,
+        valoracion INT,
+        idUsuario INT,
+        anioReproduccion INT,
+        FOREIGN KEY (codigoContenido) REFERENCES Contenido(codigo),
+        FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
+    );
+END
+GO
+
+-- Procedimiento para mover los datos de la tabla de reproducciones a la tabla de histórico
+CREATE PROCEDURE MueveReproduccionesMasDeUnAnyo
+AS
+BEGIN
+    DECLARE @anyo_actual INT;
+    SET @anyo_actual = YEAR(GETDATE());
+
+    INSERT INTO HistoricoReproducciones (id, duracion, codigoContenido, fechaReproduccion, hora, valoracion, idUsuario, anioReproduccion)
+    SELECT id, duracion, codigoContenido, fechaReproduccion, hora, valoracion, idUsuario, YEAR(fechaReproduccion)
+    FROM Reproduccion
+    WHERE fechaReproduccion <= DATEADD(YEAR, -1, GETDATE());
+END
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE PROCEDURE devuelveUsuariosMasContenido
+AS
+BEGIN
+    SELECT Usuario.nombre, SUM(Contenido.numeroReproducciones) AS NumContenidosVisualizados
+    FROM Usuario
+    INNER JOIN Contenido ON Contenido.idUsuario = Usuario.idUsuario
+    GROUP BY Usuario.nombre
+    ORDER BY NumContenidosVisualizados DESC
+END
+
+
+EXEC devuelveUsuariosMasContenido
+
 /*Crear lista de reproduccion*/
 CREATE PROCEDURE CrearListaReproduccion
 (
