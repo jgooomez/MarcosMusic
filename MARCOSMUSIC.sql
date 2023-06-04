@@ -20,12 +20,14 @@ CREATE TABLE Categoria (
 
 CREATE TABLE Contenido (
     codigo INT PRIMARY KEY IDENTITY (1,1),
+    idUsuario INT,
     titulo VARCHAR(100),
     lugarGrabacion VARCHAR(100),
     valoracion DECIMAL(3, 2),
     numeroReproducciones INT,
     album VARCHAR(100),
-    anyoLanzamiento INT
+    anyoLanzamiento INT,
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
 );
 
 CREATE TABLE Artista (
@@ -254,31 +256,27 @@ VALUES
 
 
 --CONTENIDO
-INSERT INTO Contenido (titulo, lugarGrabacion, valoracion, numeroReproducciones, album, anyoLanzamiento)
-VALUES
-    ('Bohemian Rhapsody', 'Reino Unido', 4.8, 1000000, 'A Night at the Opera', 1975),
-    ('Shape of You', 'Estados Unidos', 4.5, 850000, '÷', 2017),
-    ('Smells Like Teen Spirit', 'Estados Unidos', 4.7, 900000, 'Nevermind', 1991),
-    ('Hotel California', 'Estados Unidos', 4.9, 950000, 'Hotel California', 1976),
-    ('Despacito', 'Puerto Rico', 4.6, 950000, 'Vida', 2019),
-    
-    ('Imagine', 'Reino Unido', 4.7, 800000, 'Imagine', 1971),
-    ('Stairway to Heaven', 'Reino Unido', 4.9, 980000, 'Led Zeppelin IV', 1971),
-    ('Shape of My Heart', 'Reino Unido', 4.5, 890000, 'Ten Summoner''s Tales', 1993),
-    ('Billie Jean', 'Estados Unidos', 4.8, 920000, 'Thriller', 1982),
-    ('Hey Jude', 'Reino Unido', 4.7, 950000, 'Hey Jude', 1968),
-    
-    ('Yesterday', 'Reino Unido', 4.9, 970000, 'Help!', 1965),
-    ('Like a Rolling Stone', 'Estados Unidos', 4.7, 910000, 'Highway 61 Revisited', 1965),
-    ('Podcast de Comedia 1', 'Estados Unidos', 4.2, 50000, NULL, NULL),
-    ('Podcast de Historia 1', 'Reino Unido', 4.4, 60000, NULL, NULL),
-    ('Podcast de Ciencia 1', 'España', 4.3, 55000, NULL, NULL),
-    
-    ('Podcast de True Crime 1', 'Argentina', 4.5, 70000, NULL, NULL),
-    ('Podcast de Tecnología 1', 'México', 4.1, 45000, NULL, NULL),
-    ('Podcast de Entrevistas 1', 'Estados Unidos', 4.3, 58000, NULL, NULL),
-    ('Podcast de Política 1', 'Reino Unido', 4.4, 63000, NULL, NULL),
-    ('Podcast de Comedia 2', 'España', 4.2, 52000, NULL, NULL);
+INSERT INTO Contenido (idUsuario, titulo, lugarGrabacion, valoracion, numeroReproducciones, album, anyoLanzamiento)
+VALUES (1, 'Bohemian Rhapsody', 'Estudio A', 4.5, 100, 'A Night at the Opera', 1975),
+       (2, 'Hotel California', 'Estudio B', 4.7, 150, 'Hotel California', 1976),
+       (3, 'Imagine', 'Estudio C', 4.9, 200, 'Imagine', 1971),
+       (4, 'Smells Like Teen Spirit', 'Estudio D', 4.3, 180, 'Nevermind', 1991),
+       (5, 'Stairway to Heaven', 'Estudio E', 4.8, 220, 'Led Zeppelin IV', 1971),
+       (1, 'Hey Jude', 'Estudio A', 4.6, 120, 'The Beatles (White Album)', 1968),
+       (2, 'Yesterday', 'Estudio B', 4.4, 90, 'Help!', 1965),
+       (3, 'Wonderwall', 'Estudio C', 4.2, 160, '(What''s the Story) Morning Glory?', 1995),
+       (4, 'Sweet Child o'' Mine', 'Estudio D', 4.7, 210, 'Appetite for Destruction', 1987),
+       (5, 'Smooth Criminal', 'Estudio E', 4.5, 140, 'Bad', 1987),
+       (1, 'Imagine Dragons', 'Estudio A', 4.1, 180, 'Night Visions', 2012),
+       (2, 'Rolling in the Deep', 'Estudio B', 4.3, 230, '21', 2010),
+       (3, 'Boys Don''t Cry', 'Estudio C', 4.2, 120, 'Three Imaginary Boys', 1979),
+       (4, 'Like a Rolling Stone', 'Estudio D', 4.9, 270, 'Highway 61 Revisited', 1965),
+       (5, 'I Will Always Love You', 'Estudio E', 4.8, 200, 'The Bodyguard Soundtrack', 1992),
+       (1, 'Billie Jean', 'Estudio A', 4.7, 250, 'Thriller', 1982),
+       (2, 'Smells Like Teen Spirit', 'Estudio B', 4.5, 220, 'Nevermind', 1991),
+       (3, 'Wonderful Tonight', 'Estudio C', 4.6, 190, 'Slowhand', 1977),
+       (4, 'Angie', 'Estudio D', 4.4, 170, 'Goats Head Soup', 1973),
+       (5, 'Hallelujah', 'Estudio E', 4.9, 260, 'Various Positions', 1984);
 
 --ARTISTA
 INSERT INTO Artista (nombre, fechaInicio, nacionalidad, numPremios, generoMusical)
