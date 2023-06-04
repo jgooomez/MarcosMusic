@@ -1,5 +1,7 @@
-"--FUNCIONES Y PROCEDURES PARA EMPLEADOS Y DEPARTAMENTOS--"
+--FUNCIONES Y PROCEDURES PARA EMPLEADOS Y DEPARTAMENTOS--
+--Daniel Pantoja Cedeño
 
+--PROCEDURES
 --PROCEDIMIENTO QUE PERMITE ACTUALIZAR AL ENCARGADO DE DEPARTAMENTO--
 CREATE PROCEDURE ActualizarEncargado
     @idDepartamento int,
@@ -11,6 +13,19 @@ BEGIN
     WHERE idDepartamento = @idDepartamento
 END
 
+--PROCEDIMIENTO PARA CAMBIAR EL DEPARTAMENTO DE UN EMPLEADO--
+--Nota: no se por qué el procedimiento me da un error como si estuviese haciendo un bucle, pero actualiza el empleado.
+CREATE PROCEDURE cambiarDep
+    @idEmpleado int,
+    @idNuevoDepartamento int
+AS
+BEGIN
+    UPDATE Empleado
+    SET idDepartamento = @idNuevoDepartamento
+    WHERE idEmpleado = @idEmpleado
+END
+
+--FUNCTIONS
 --FUNCION PARA OPTENER UNA LISTA DE NOMBRES Y EDADES DE TODOS LOS EMPLEADOS DE UN DEPARTAMENTO--
 CREATE FUNCTION getEmpleados (@idDepartamento int)
 RETURNS TABLE
