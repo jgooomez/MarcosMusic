@@ -159,7 +159,7 @@ CREATE TABLE Departamento (
 );
 
 CREATE TABLE Empleado (
-    idEmpleado int PRIMARY KEY,
+    idEmpleado int PRIMARY KEY IDENTITY (1,1),
     nombre nvarchar(50),
     edad int,
     nacionalidad nvarchar(50),
