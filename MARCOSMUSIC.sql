@@ -18,18 +18,6 @@ CREATE TABLE Categoria (
     descripcion VARCHAR(100)
 );
 
-CREATE TABLE Contenido (
-    codigo INT PRIMARY KEY IDENTITY (1,1),
-    idUsuario INT,
-    titulo VARCHAR(100),
-    lugarGrabacion VARCHAR(100),
-    valoracion DECIMAL(3, 2),
-    numeroReproducciones INT,
-    album VARCHAR(100),
-    anyoLanzamiento INT,
-    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
-);
-
 CREATE TABLE Artista (
     id INT PRIMARY KEY IDENTITY (1,1),
     nombre VARCHAR(100),
@@ -56,6 +44,18 @@ CREATE TABLE Usuario (
     fotoPerfil VARCHAR(100),
     edad INT,
     numSeguidores INT
+);
+
+CREATE TABLE Contenido (
+    codigo INT PRIMARY KEY IDENTITY (1,1),
+    idUsuario INT,
+    titulo VARCHAR(100),
+    lugarGrabacion VARCHAR(100),
+    valoracion DECIMAL(3, 2),
+    numeroReproducciones INT,
+    album VARCHAR(100),
+    anyoLanzamiento INT,
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
 );
 
 CREATE TABLE Reproduccion (
@@ -255,29 +255,6 @@ VALUES
     ('Salud y Bienestar', 'Podcasts que ofrecen información y consejos sobre salud física y mental.');
 
 
---CONTENIDO
-INSERT INTO Contenido (idUsuario, titulo, lugarGrabacion, valoracion, numeroReproducciones, album, anyoLanzamiento)
-VALUES (1, 'Bohemian Rhapsody', 'Estudio A', 4.5, 100, 'A Night at the Opera', 1975),
-       (2, 'Hotel California', 'Estudio B', 4.7, 150, 'Hotel California', 1976),
-       (3, 'Imagine', 'Estudio C', 4.9, 200, 'Imagine', 1971),
-       (4, 'Smells Like Teen Spirit', 'Estudio D', 4.3, 180, 'Nevermind', 1991),
-       (5, 'Stairway to Heaven', 'Estudio E', 4.8, 220, 'Led Zeppelin IV', 1971),
-       (1, 'Hey Jude', 'Estudio A', 4.6, 120, 'The Beatles (White Album)', 1968),
-       (2, 'Yesterday', 'Estudio B', 4.4, 90, 'Help!', 1965),
-       (3, 'Wonderwall', 'Estudio C', 4.2, 160, '(What''s the Story) Morning Glory?', 1995),
-       (4, 'Sweet Child o'' Mine', 'Estudio D', 4.7, 210, 'Appetite for Destruction', 1987),
-       (5, 'Smooth Criminal', 'Estudio E', 4.5, 140, 'Bad', 1987),
-       (1, 'Imagine Dragons', 'Estudio A', 4.1, 180, 'Night Visions', 2012),
-       (2, 'Rolling in the Deep', 'Estudio B', 4.3, 230, '21', 2010),
-       (3, 'Boys Don''t Cry', 'Estudio C', 4.2, 120, 'Three Imaginary Boys', 1979),
-       (4, 'Like a Rolling Stone', 'Estudio D', 4.9, 270, 'Highway 61 Revisited', 1965),
-       (5, 'I Will Always Love You', 'Estudio E', 4.8, 200, 'The Bodyguard Soundtrack', 1992),
-       (1, 'Billie Jean', 'Estudio A', 4.7, 250, 'Thriller', 1982),
-       (2, 'Smells Like Teen Spirit', 'Estudio B', 4.5, 220, 'Nevermind', 1991),
-       (3, 'Wonderful Tonight', 'Estudio C', 4.6, 190, 'Slowhand', 1977),
-       (4, 'Angie', 'Estudio D', 4.4, 170, 'Goats Head Soup', 1973),
-       (5, 'Hallelujah', 'Estudio E', 4.9, 260, 'Various Positions', 1984);
-
 --ARTISTA
 INSERT INTO Artista (nombre, fechaInicio, nacionalidad, numPremios, generoMusical)
 VALUES
@@ -358,6 +335,30 @@ VALUES
     ('Noruega', 'Ingrid Olsen', 'cookie.png', 29, 4900),
     ('Portugal', 'Miguel Silva', 'pig.png', 32, 5300),
     ('Países Bajos', 'Lotte de Vries', 'cloud.png', 31, 5800);
+
+	--CONTENIDO
+INSERT INTO Contenido (idUsuario, titulo, lugarGrabacion, valoracion, numeroReproducciones, album, anyoLanzamiento)
+VALUES (1, 'Bohemian Rhapsody', 'Estudio A', 4.5, 100, 'A Night at the Opera', 1975),
+       (2, 'Hotel California', 'Estudio B', 4.7, 150, 'Hotel California', 1976),
+       (3, 'Imagine', 'Estudio C', 4.9, 200, 'Imagine', 1971),
+       (4, 'Smells Like Teen Spirit', 'Estudio D', 4.3, 180, 'Nevermind', 1991),
+       (5, 'Stairway to Heaven', 'Estudio E', 4.8, 220, 'Led Zeppelin IV', 1971),
+       (1, 'Hey Jude', 'Estudio A', 4.6, 120, 'The Beatles (White Album)', 1968),
+       (2, 'Yesterday', 'Estudio B', 4.4, 90, 'Help!', 1965),
+       (3, 'Wonderwall', 'Estudio C', 4.2, 160, '(What''s the Story) Morning Glory?', 1995),
+       (4, 'Sweet Child o'' Mine', 'Estudio D', 4.7, 210, 'Appetite for Destruction', 1987),
+       (5, 'Smooth Criminal', 'Estudio E', 4.5, 140, 'Bad', 1987),
+       (1, 'Imagine Dragons', 'Estudio A', 4.1, 180, 'Night Visions', 2012),
+       (2, 'Rolling in the Deep', 'Estudio B', 4.3, 230, '21', 2010),
+       (3, 'Boys Don''t Cry', 'Estudio C', 4.2, 120, 'Three Imaginary Boys', 1979),
+       (4, 'Like a Rolling Stone', 'Estudio D', 4.9, 270, 'Highway 61 Revisited', 1965),
+       (5, 'I Will Always Love You', 'Estudio E', 4.8, 200, 'The Bodyguard Soundtrack', 1992),
+       (1, 'Billie Jean', 'Estudio A', 4.7, 250, 'Thriller', 1982),
+       (2, 'Smells Like Teen Spirit', 'Estudio B', 4.5, 220, 'Nevermind', 1991),
+       (3, 'Wonderful Tonight', 'Estudio C', 4.6, 190, 'Slowhand', 1977),
+       (4, 'Angie', 'Estudio D', 4.4, 170, 'Goats Head Soup', 1973),
+       (5, 'Hallelujah', 'Estudio E', 4.9, 260, 'Various Positions', 1984);
+
 
 --REPRODUCCION
 INSERT INTO Reproduccion (duracion, codigoContenido, fechaReproduccion, hora, valoracion, idUsuario)
