@@ -73,7 +73,8 @@ CREATE TABLE Reproduccion (
 CREATE TABLE Subscripcion (
     id INT PRIMARY KEY IDENTITY (1,1),
     tipo VARCHAR(100),
-    precio DECIMAL(5, 2)
+    precio DECIMAL(5, 2),
+    descripcion VARCHAR(500)
 );
 
 CREATE TABLE Tarjeta (
@@ -389,13 +390,13 @@ VALUES
 
 --Suscripcion
 
-INSERT INTO Subscripcion (tipo, precio)
-VALUES
-    ('básica', 9.99),
-    ('premium', 14.99),
-    ('familiar', 24.99),
-    ('estudiante', 4.99),
-    ('mensual', 6.99);
+INSERT INTO Subscripcion (tipo, precio, descripcion)
+VALUES 
+    ('BASICA', 9.99, 'La suscripción básica te ofrece acceso limitado a nuestra aplicación de música. Disfruta de una selección de canciones populares de diversos géneros y artistas. Explora nuestras listas de reproducción recomendadas y disfruta de la música en cualquier momento y lugar.'),
+    ('PREMIUM INDIVIDUAL', 19.99, 'La suscripción premium individual te brinda acceso ilimitado a nuestra aplicación de música. Descubre millones de canciones de tus artistas favoritos y explora nuevos géneros musicales. Disfruta de una experiencia sin anuncios y descarga canciones para escucharlas sin conexión. Crea tus propias listas de reproducción y comparte tu música con amigos.'),
+    ('PREMIUM FAMLILY', 29.99, 'La suscripción premium familiar es perfecta para toda la familia. Con esta suscripción, tú y tus seres queridos podrán disfrutar de todas las ventajas de nuestra aplicación de música. Cada miembro de la familia puede crear perfiles personalizados, acceder a una amplia biblioteca de canciones y disfrutar de la música sin interrupciones publicitarias. Comparte y descubre música juntos.'),
+    ('PREMIUM DUO', 14.99, 'La suscripción premium dúo es ideal para parejas o amigos amantes de la música. Obtén acceso completo a nuestra aplicación de música y disfruta de todas las características premium diseñadas para dos usuarios. Escucha música ilimitada sin anuncios, descarga tus canciones favoritas para escucharlas sin conexión y disfruta de recomendaciones personalizadas para ambos.'),
+    ('PREMIUM STUDENT', 4.99, 'La suscripción premium para estudiantes es una oferta especial pensada exclusivamente para estudiantes. Obtén acceso completo a nuestra aplicación de música y disfruta de todos los beneficios del plan premium a un precio reducido. Escucha tus canciones favoritas sin límites, descubre nuevos artistas y mantente concentrado mientras estudias con nuestras listas de reproducción curadas para estudiantes.');
 
 --tarjeta
 INSERT INTO Tarjeta (numeroTarjeta, telefono, tipo, nombreTitular, cvv, caducidad, idUsuario)
