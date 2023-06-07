@@ -365,21 +365,22 @@ CREATE PROCEDURE CrearDepartamento
     @fechaCreacion DATE,
     @nombreEncargado NVARCHAR(50),
     @numTrabajadores INT,
-    @numSubdepartamentos INT
+    @numSubdepartamentos INT, @depCreado BIT OUT
 AS
 BEGIN
     -- Verificar si el departamento ya existe
     IF EXISTS (SELECT 1 FROM Departamento WHERE idDepartamento = @idDepartamento)
     BEGIN
-        PRINT 'El departamento ya existe.';
+        SET @depCreado = 1;
     END
     ELSE
     BEGIN
         -- Insertar el nuevo departamento
         INSERT INTO Departamento (idDepartamento, nombre, fechaCreacion, NombreEncargado, numTrabajadores, numSubDpto)
         VALUES (@idDepartamento, @nombreDepartamento, @fechaCreacion, @nombreEncargado, @numTrabajadores, @numSubdepartamentos);
-        PRINT 'El departamento ha sido creado.';
+        SET @depCreado = 0;
     END
+	RETURN @depCreado;
 END
 
 --Procedimiento para eliminar un departamento SOLO si existe
