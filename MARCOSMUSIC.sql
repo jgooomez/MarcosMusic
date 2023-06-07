@@ -1,10 +1,9 @@
--- Desconectar todas las conexiones a la base de datos
 USE master;
 ALTER DATABASE MARCOSMUSIC SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
 
 -- Eliminar la base de datos si existe
 IF EXISTS (SELECT * FROM sys.databases WHERE name = 'MARCOSMUSIC')
-    DROP DATABASE MARCOSMUSIC;
+DROP DATABASE MARCOSMUSIC;
 
 -- Crear la base de datos MARCOSMUSIC
 CREATE DATABASE MARCOSMUSIC;
@@ -13,156 +12,168 @@ GO
 USE MARCOSMUSIC;
 
 CREATE TABLE Categoria (
-    codigo INT PRIMARY KEY IDENTITY (1,1),
-    nombre VARCHAR(100),
-    descripcion VARCHAR(100)
+codigo INT IDENTITY (1,1),
+nombre VARCHAR(100),
+descripcion VARCHAR(100),
+CONSTRAINT PK_Categoria PRIMARY KEY (codigo)
 );
 
 CREATE TABLE Artista (
-    id INT PRIMARY KEY IDENTITY (1,1),
-    nombre VARCHAR(100),
-    fechaInicio DATE,
-    nacionalidad VARCHAR(100),
-    numPremios INT,
-    generoMusical VARCHAR(100)
+id INT IDENTITY (1,1),
+nombre VARCHAR(100),
+fechaInicio DATE,
+nacionalidad VARCHAR(100),
+numPremios INT,
+generoMusical VARCHAR(100),
+CONSTRAINT PK_Artista PRIMARY KEY (id)
 );
 
 CREATE TABLE Concierto (
-    codigo INT PRIMARY KEY IDENTITY (1,1),
-    lugar VARCHAR(100),
-    fecha DATE,
-    ciudad VARCHAR(100),
-    pais VARCHAR(100),
-    capacidad INT,
-    dineroRecaudado DECIMAL(10, 2)
+codigo INT IDENTITY (1,1),
+lugar VARCHAR(100),
+fecha DATE,
+ciudad VARCHAR(100),
+pais VARCHAR(100),
+capacidad INT,
+dineroRecaudado DECIMAL(10, 2),
+CONSTRAINT PK_Concierto PRIMARY KEY (codigo)
 );
 
 CREATE TABLE Usuario (
-    idUsuario INT PRIMARY KEY IDENTITY (1,1),
-    nacionalidad VARCHAR(100),
-    nombre VARCHAR(100),
-    fotoPerfil VARCHAR(100),
-    edad INT,
-    numSeguidores INT
+idUsuario INT IDENTITY (1,1),
+nacionalidad VARCHAR(100),
+nombre VARCHAR(100),
+fotoPerfil VARCHAR(100),
+edad INT,
+numSeguidores INT,
+CONSTRAINT PK_Usuario PRIMARY KEY (idUsuario)
 );
 
 CREATE TABLE Contenido (
-    codigo INT PRIMARY KEY IDENTITY (1,1),
-    idUsuario INT,
-    titulo VARCHAR(100),
-    lugarGrabacion VARCHAR(100),
-    valoracion DECIMAL(3, 2),
-    numeroReproducciones INT,
-    album VARCHAR(100),
-    anyoLanzamiento INT,
-    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE CASCADE
+codigo INT IDENTITY (1,1),
+idUsuario INT,
+titulo VARCHAR(100),
+lugarGrabacion VARCHAR(100),
+valoracion DECIMAL(3, 2),
+numeroReproducciones INT,
+album VARCHAR(100),
+anyoLanzamiento INT,
+CONSTRAINT PK_Contenido PRIMARY KEY (codigo),
+CONSTRAINT FK_Contenido_Usuario FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE CASCADE
 );
 
 CREATE TABLE Reproduccion (
-    id INT PRIMARY KEY IDENTITY (1,1),
-    duracion INT,
-    codigoContenido INT,
-    fechaReproduccion DATE,
-    hora TIME,
-    valoracion INT,
-    idUsuario INT,
-    FOREIGN KEY (codigoContenido) REFERENCES Contenido(codigo) ON DELETE CASCADE,
-    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE NO ACTION
+id INT IDENTITY (1,1),
+duracion INT,
+codigoContenido INT,
+fechaReproduccion DATE,
+hora TIME,
+valoracion INT,
+idUsuario INT,
+CONSTRAINT PK_Reproduccion PRIMARY KEY (id),
+CONSTRAINT FK_Reproduccion_Contenido FOREIGN KEY (codigoContenido) REFERENCES Contenido(codigo) ON DELETE CASCADE,
+CONSTRAINT FK_Reproduccion_Usuario FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE NO ACTION
 );
 
 CREATE TABLE Subscripcion (
-    id INT PRIMARY KEY IDENTITY (1,1),
-    tipo VARCHAR(100),
-    precio DECIMAL(5, 2),
-    descripcion VARCHAR(500)
+id INT IDENTITY (1,1),
+tipo VARCHAR(100),
+precio DECIMAL(5, 2),
+descripcion VARCHAR(500),
+CONSTRAINT PK_Subscripcion PRIMARY KEY (id)
 );
 
 CREATE TABLE Tarjeta (
-    numeroTarjeta VARCHAR(16) PRIMARY KEY,
-    telefono VARCHAR(9),
-    tipo VARCHAR(100),
-    nombreTitular VARCHAR(100),
-    cvv INT,
-    caducidad DATE,
-    idUsuario INT,
-    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE CASCADE
+numeroTarjeta VARCHAR(16),
+telefono VARCHAR(9),
+tipo VARCHAR(100),
+nombreTitular VARCHAR(100),
+cvv INT,
+caducidad DATE,
+idUsuario INT,
+CONSTRAINT PK_Tarjeta PRIMARY KEY (numeroTarjeta),
+CONSTRAINT FK_Tarjeta_Usuario FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE CASCADE
 );
 
 CREATE TABLE ListaReproduccion (
-    codigo INT PRIMARY KEY IDENTITY (1,1),
-    fechaCreacion DATE,
-    nombre VARCHAR(100),
-    duracionTotal INT,
-    imagen VARCHAR(100),
-    numSeguidores INT
+codigo INT IDENTITY (1,1),
+fechaCreacion DATE,
+nombre VARCHAR(100),
+duracionTotal INT,
+imagen VARCHAR(100),
+numSeguidores INT,
+CONSTRAINT PK_ListaReproduccion PRIMARY KEY (codigo)
 );
 
 CREATE TABLE ListaCanciones (
-    codigoLista INT,
-    codigoCancion INT,
-    fechaAgregado DATE,
-    FOREIGN KEY (codigoLista) REFERENCES ListaReproduccion(codigo) ON DELETE CASCADE,
-    FOREIGN KEY (codigoCancion) REFERENCES Contenido(codigo) ON DELETE CASCADE,
-    PRIMARY KEY (codigoLista, codigoCancion)
+codigoLista INT,
+codigoCancion INT,
+fechaAgregado DATE,
+CONSTRAINT PK_ListaCanciones PRIMARY KEY (codigoLista, codigoCancion),
+CONSTRAINT FK_ListaCanciones_ListaReproduccion FOREIGN KEY (codigoLista) REFERENCES ListaReproduccion(codigo) ON DELETE CASCADE,
+CONSTRAINT FK_ListaCanciones_Contenido FOREIGN KEY (codigoCancion) REFERENCES Contenido(codigo) ON DELETE CASCADE
 );
 
 CREATE TABLE ListaPodcasts (
-    codigoLista INT,
-    codigoPodcast INT,
-    fechaAgregado DATE,
-    FOREIGN KEY (codigoLista) REFERENCES ListaReproduccion(codigo) ON DELETE CASCADE,
-    FOREIGN KEY (codigoPodcast) REFERENCES Contenido(codigo) ON DELETE CASCADE,
-    PRIMARY KEY (codigoLista, codigoPodcast)
+codigoLista INT,
+codigoPodcast INT,
+fechaAgregado DATE,
+CONSTRAINT PK_ListaPodcasts PRIMARY KEY (codigoLista, codigoPodcast),
+CONSTRAINT FK_ListaPodcasts_ListaReproduccion FOREIGN KEY (codigoLista) REFERENCES ListaReproduccion(codigo) ON DELETE CASCADE,
+CONSTRAINT FK_ListaPodcasts_Contenido FOREIGN KEY (codigoPodcast) REFERENCES Contenido(codigo) ON DELETE CASCADE
 );
 
 CREATE TABLE ConciertoArtista (
-    codigoConcierto INT,
-    idArtista INT,
-    FOREIGN KEY (codigoConcierto) REFERENCES Concierto(codigo) ON DELETE CASCADE,
-    FOREIGN KEY (idArtista) REFERENCES Artista(id) ON DELETE CASCADE,
-    PRIMARY KEY (codigoConcierto, idArtista)
+codigoConcierto INT,
+idArtista INT,
+CONSTRAINT PK_ConciertoArtista PRIMARY KEY (codigoConcierto, idArtista),
+CONSTRAINT FK_ConciertoArtista_Concierto FOREIGN KEY (codigoConcierto) REFERENCES Concierto(codigo) ON DELETE CASCADE,
+CONSTRAINT FK_ConciertoArtista_Artista FOREIGN KEY (idArtista) REFERENCES Artista(id) ON DELETE CASCADE
 );
 
 CREATE TABLE ArtistaContenido (
-    idArtista INT,
-    codigoContenido INT,
-    FOREIGN KEY (idArtista) REFERENCES Artista(id) ON DELETE CASCADE,
-    FOREIGN KEY (codigoContenido) REFERENCES Contenido(codigo) ON DELETE CASCADE,
-    PRIMARY KEY (idArtista, codigoContenido)
+idArtista INT,
+codigoContenido INT,
+CONSTRAINT PK_ArtistaContenido PRIMARY KEY (idArtista, codigoContenido),
+CONSTRAINT FK_ArtistaContenido_Artista FOREIGN KEY (idArtista) REFERENCES Artista(id) ON DELETE CASCADE,
+CONSTRAINT FK_ArtistaContenido_Contenido FOREIGN KEY (codigoContenido) REFERENCES Contenido(codigo) ON DELETE CASCADE
 );
 
 CREATE TABLE SubscripcionUsuario (
-    idSubscripcion INT,
-    idUsuario INT,
-    FOREIGN KEY (idSubscripcion) REFERENCES Subscripcion(id) ON DELETE CASCADE,
-    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE CASCADE,
-    PRIMARY KEY (idSubscripcion, idUsuario)
+idSubscripcion INT,
+idUsuario INT,
+CONSTRAINT PK_SubscripcionUsuario PRIMARY KEY (idSubscripcion, idUsuario),
+CONSTRAINT FK_SubscripcionUsuario_Subscripcion FOREIGN KEY (idSubscripcion) REFERENCES Subscripcion(id) ON DELETE CASCADE,
+CONSTRAINT FK_SubscripcionUsuario_Usuario FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE CASCADE
 );
 
 CREATE TABLE CuentaPrincipal (
-    telefono VARCHAR(9) PRIMARY KEY,
-    metodoPago VARCHAR(100),
-    idUsuario INT,
-    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE CASCADE
+telefono VARCHAR(9),
+metodoPago VARCHAR(100),
+idUsuario INT,
+CONSTRAINT PK_CuentaPrincipal PRIMARY KEY (telefono),
+CONSTRAINT FK_CuentaPrincipal_Usuario FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE CASCADE
 );
 
 CREATE TABLE Departamento (
-    idDepartamento INT PRIMARY KEY,
-    nombre NVARCHAR(50),
-    fechaCreacion DATE,
-    NombreEncargado NVARCHAR(50),
-    numTrabajadores INT,
-    numSubDpto INT
+idDepartamento INT,
+nombre NVARCHAR(50),
+fechaCreacion DATE,
+NombreEncargado NVARCHAR(50),
+numTrabajadores INT,
+numSubDpto INT,
+CONSTRAINT PK_Departamento PRIMARY KEY (idDepartamento)
 );
 
 CREATE TABLE Empleado (
-    idEmpleado INT PRIMARY KEY IDENTITY (1,1),
-    nombre NVARCHAR(50),
-    edad INT,
-    nacionalidad NVARCHAR(50),
-    fechaIncorporacion DATE,
-    idDepartamento INT,
-    FOREIGN KEY (idDepartamento) REFERENCES Departamento(idDepartamento) ON DELETE CASCADE
+idEmpleado INT IDENTITY (1,1),
+nombre NVARCHAR(50),
+edad INT,
+nacionalidad NVARCHAR(50),
+fechaIncorporacion DATE,
+idDepartamento INT,
+CONSTRAINT PK_Empleado PRIMARY KEY (idEmpleado),
+CONSTRAINT FK_Empleado_Departamento FOREIGN KEY (idDepartamento) REFERENCES Departamento(idDepartamento) ON DELETE CASCADE
 );
 
 
