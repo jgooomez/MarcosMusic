@@ -319,31 +319,32 @@ VALUES
     ('Estadio Nacional', '2023-08-18', 'Montevideo', 'Uruguay', 32000, 700000.00);
 
 --USUARIO
-INSERT INTO Usuario (nacionalidad, nombre, fotoPerfil, edad, numSeguidores)
+INSERT INTO Usuario (nacionalidad, nombre, userName, password, edad, numSeguidores)
 VALUES
-    ('Estados Unidos', 'John Doe', 'dog.png', 28, 5000),
-    ('Reino Unido', 'Jane Smith', 'cat.png', 32, 7000),
-    ('España', 'Pedro López', 'cookie.png', 24, 3000),
-    ('Francia', 'Sophie Martin', 'pig.png', 35, 6000),
-    ('Brasil', 'Lucas Silva', 'cloud.png', 30, 4000),
-    
-    ('Alemania', 'Anna Müller', 'dog.png', 29, 5500),
-    ('Italia', 'Marco Rossi', 'cat.png', 27, 4800),
-    ('México', 'María Hernández', 'cookie.png', 31, 6800),
-    ('Canadá', 'Emily Johnson', 'pig.png', 26, 5200),
-    ('Australia', 'Oliver Wilson', 'cloud.png', 33, 7500),
-    
-    ('Argentina', 'Carolina Gómez', 'dog.png', 29, 4200),
-    ('India', 'Raj Patel', 'cat.png', 34, 5700),
-    ('China', 'Li Wei', 'cookie.png', 25, 3800),
-    ('Japón', 'Yuki Nakamura', 'pig.png', 23, 4100),
-    ('Rusia', 'Ivan Petrov', 'cloud.png', 28, 4600),
-    
-    ('Sudáfrica', 'Lerato Mbeki', 'dog.png', 30, 6200),
-    ('Suecia', 'Erik Andersson', 'cat.png', 27, 5500),
-    ('Noruega', 'Ingrid Olsen', 'cookie.png', 29, 4900),
-    ('Portugal', 'Miguel Silva', 'pig.png', 32, 5300),
-    ('Países Bajos', 'Lotte de Vries', 'cloud.png', 31, 5800);
+    ('Estados Unidos', 'John Doe', 'johndoe', 'password1', 28, 5000),
+    ('Reino Unido', 'Jane Smith', 'janesmith', 'password2', 32, 7000),
+    ('España', 'Pedro López', 'pedrolopez', 'password3', 24, 3000),
+    ('Francia', 'Sophie Martin', 'sophiemartin', 'password4', 35, 6000),
+    ('Brasil', 'Lucas Silva', 'lucassilva', 'password5', 30, 4000),
+
+    ('Alemania', 'Anna Müller', 'annamuller', 'password6', 29, 5500),
+    ('Italia', 'Marco Rossi', 'marcorossi', 'password7', 27, 4800),
+    ('México', 'María Hernández', 'mariahernandez', 'password8', 31, 6800),
+    ('Canadá', 'Emily Johnson', 'emilyjohnson', 'password9', 26, 5200),
+    ('Australia', 'Oliver Wilson', 'oliverwilson', 'password10', 33, 7500),
+
+    ('Argentina', 'Carolina Gómez', 'carolinagomez', 'password11', 29, 4200),
+    ('India', 'Raj Patel', 'rajpatel', 'password12', 34, 5700),
+    ('China', 'Li Wei', 'liwei', 'password13', 25, 3800),
+    ('Japón', 'Yuki Nakamura', 'yukinakamura', 'password14', 23, 4100),
+    ('Rusia', 'Ivan Petrov', 'ivanpetrov', 'password15', 28, 4600),
+
+    ('Sudáfrica', 'Lerato Mbeki', 'leratombeki', 'password16', 30, 6200),
+    ('Suecia', 'Erik Andersson', 'erikandersson', 'password17', 27, 5500),
+    ('Noruega', 'Ingrid Olsen', 'ingridolsen', 'password18', 29, 4900),
+    ('Portugal', 'Miguel Silva', 'miguelsilva', 'password19', 32, 5300),
+    ('Países Bajos', 'Lotte de Vries', 'lottedevries', 'password20', 31, 5800);
+
 
 	--CONTENIDO
 INSERT INTO Contenido (idUsuario, titulo, lugarGrabacion, valoracion, numeroReproducciones, album, anyoLanzamiento)
