@@ -67,7 +67,7 @@ CREATE TABLE Reproduccion (
     valoracion INT,
     idUsuario INT,
     FOREIGN KEY (codigoContenido) REFERENCES Contenido(codigo) ON DELETE CASCADE,
-    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE CASCADE
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE NO ACTION
 );
 
 CREATE TABLE Subscripcion (
