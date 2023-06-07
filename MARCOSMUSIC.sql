@@ -55,7 +55,7 @@ CREATE TABLE Contenido (
     numeroReproducciones INT,
     album VARCHAR(100),
     anyoLanzamiento INT,
-    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE CASCADE
 );
 
 CREATE TABLE Reproduccion (
@@ -66,8 +66,8 @@ CREATE TABLE Reproduccion (
     hora TIME,
     valoracion INT,
     idUsuario INT,
-    FOREIGN KEY (codigoContenido) REFERENCES Contenido(codigo),
-    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
+    FOREIGN KEY (codigoContenido) REFERENCES Contenido(codigo) ON DELETE CASCADE,
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE CASCADE
 );
 
 CREATE TABLE Subscripcion (
@@ -85,7 +85,7 @@ CREATE TABLE Tarjeta (
     cvv INT,
     caducidad DATE,
     idUsuario INT,
-    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE CASCADE
 );
 
 CREATE TABLE ListaReproduccion (
@@ -101,8 +101,8 @@ CREATE TABLE ListaCanciones (
     codigoLista INT,
     codigoCancion INT,
     fechaAgregado DATE,
-    FOREIGN KEY (codigoLista) REFERENCES ListaReproduccion(codigo),
-    FOREIGN KEY (codigoCancion) REFERENCES Contenido(codigo),
+    FOREIGN KEY (codigoLista) REFERENCES ListaReproduccion(codigo) ON DELETE CASCADE,
+    FOREIGN KEY (codigoCancion) REFERENCES Contenido(codigo) ON DELETE CASCADE,
     PRIMARY KEY (codigoLista, codigoCancion)
 );
 
@@ -110,32 +110,32 @@ CREATE TABLE ListaPodcasts (
     codigoLista INT,
     codigoPodcast INT,
     fechaAgregado DATE,
-    FOREIGN KEY (codigoLista) REFERENCES ListaReproduccion(codigo),
-    FOREIGN KEY (codigoPodcast) REFERENCES Contenido(codigo),
+    FOREIGN KEY (codigoLista) REFERENCES ListaReproduccion(codigo) ON DELETE CASCADE,
+    FOREIGN KEY (codigoPodcast) REFERENCES Contenido(codigo) ON DELETE CASCADE,
     PRIMARY KEY (codigoLista, codigoPodcast)
 );
 
 CREATE TABLE ConciertoArtista (
     codigoConcierto INT,
     idArtista INT,
-    FOREIGN KEY (codigoConcierto) REFERENCES Concierto(codigo),
-    FOREIGN KEY (idArtista) REFERENCES Artista(id),
+    FOREIGN KEY (codigoConcierto) REFERENCES Concierto(codigo) ON DELETE CASCADE,
+    FOREIGN KEY (idArtista) REFERENCES Artista(id) ON DELETE CASCADE,
     PRIMARY KEY (codigoConcierto, idArtista)
 );
 
 CREATE TABLE ArtistaContenido (
     idArtista INT,
     codigoContenido INT,
-    FOREIGN KEY (idArtista) REFERENCES Artista(id),
-    FOREIGN KEY (codigoContenido) REFERENCES Contenido(codigo),
+    FOREIGN KEY (idArtista) REFERENCES Artista(id) ON DELETE CASCADE,
+    FOREIGN KEY (codigoContenido) REFERENCES Contenido(codigo) ON DELETE CASCADE,
     PRIMARY KEY (idArtista, codigoContenido)
 );
 
 CREATE TABLE SubscripcionUsuario (
     idSubscripcion INT,
     idUsuario INT,
-    FOREIGN KEY (idSubscripcion) REFERENCES Subscripcion(id),
-    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario),
+    FOREIGN KEY (idSubscripcion) REFERENCES Subscripcion(id) ON DELETE CASCADE,
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE CASCADE,
     PRIMARY KEY (idSubscripcion, idUsuario)
 );
 
@@ -143,27 +143,28 @@ CREATE TABLE CuentaPrincipal (
     telefono VARCHAR(9) PRIMARY KEY,
     metodoPago VARCHAR(100),
     idUsuario INT,
-    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE CASCADE
 );
 
 CREATE TABLE Departamento (
-    idDepartamento int PRIMARY KEY,
-    nombre nvarchar(50),
+    idDepartamento INT PRIMARY KEY,
+    nombre NVARCHAR(50),
     fechaCreacion DATE,
-    NombreEncargado nvarchar(50),
-    numTrabajadores int,
-    numSubDpto int
+    NombreEncargado NVARCHAR(50),
+    numTrabajadores INT,
+    numSubDpto INT
 );
 
 CREATE TABLE Empleado (
-    idEmpleado int PRIMARY KEY IDENTITY (1,1),
-    nombre nvarchar(50),
-    edad int,
-    nacionalidad nvarchar(50),
+    idEmpleado INT PRIMARY KEY IDENTITY (1,1),
+    nombre NVARCHAR(50),
+    edad INT,
+    nacionalidad NVARCHAR(50),
     fechaIncorporacion DATE,
-    idDepartamento int,
-    FOREIGN KEY (idDepartamento) REFERENCES Departamento(idDepartamento)
+    idDepartamento INT,
+    FOREIGN KEY (idDepartamento) REFERENCES Departamento(idDepartamento) ON DELETE CASCADE
 );
+
 
 /*Checks*/
 
