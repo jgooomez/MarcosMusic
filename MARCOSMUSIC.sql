@@ -166,6 +166,87 @@ CREATE TABLE Empleado (
 );
 
 
+/*Añadir el delete on cascade*/
+ALTER TABLE Contenido
+    ADD CONSTRAINT FK_Contenido_Usuario
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
+    ON DELETE CASCADE;
+
+ALTER TABLE Reproduccion
+    ADD CONSTRAINT FK_Reproduccion_Contenido
+    FOREIGN KEY (codigoContenido) REFERENCES Contenido(codigo)
+    ON DELETE CASCADE;
+
+ALTER TABLE Reproduccion
+    ADD CONSTRAINT FK_Reproduccion_Usuario
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
+    ON DELETE CASCADE;
+
+ALTER TABLE Tarjeta
+    ADD CONSTRAINT FK_Tarjeta_Usuario
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
+    ON DELETE CASCADE;
+
+ALTER TABLE ListaCanciones
+    ADD CONSTRAINT FK_ListaCanciones_ListaReproduccion
+    FOREIGN KEY (codigoLista) REFERENCES ListaReproduccion(codigo)
+    ON DELETE CASCADE;
+
+ALTER TABLE ListaCanciones
+    ADD CONSTRAINT FK_ListaCanciones_Contenido
+    FOREIGN KEY (codigoCancion) REFERENCES Contenido(codigo)
+    ON DELETE CASCADE;
+
+ALTER TABLE ListaPodcasts
+    ADD CONSTRAINT FK_ListaPodcasts_ListaReproduccion
+    FOREIGN KEY (codigoLista) REFERENCES ListaReproduccion(codigo)
+    ON DELETE CASCADE;
+
+ALTER TABLE ListaPodcasts
+    ADD CONSTRAINT FK_ListaPodcasts_Contenido
+    FOREIGN KEY (codigoPodcast) REFERENCES Contenido(codigo)
+    ON DELETE CASCADE;
+
+ALTER TABLE ConciertoArtista
+    ADD CONSTRAINT FK_ConciertoArtista_Concierto
+    FOREIGN KEY (codigoConcierto) REFERENCES Concierto(codigo)
+    ON DELETE CASCADE;
+
+ALTER TABLE ConciertoArtista
+    ADD CONSTRAINT FK_ConciertoArtista_Artista
+    FOREIGN KEY (idArtista) REFERENCES Artista(id)
+    ON DELETE CASCADE;
+
+ALTER TABLE ArtistaContenido
+    ADD CONSTRAINT FK_ArtistaContenido_Artista
+    FOREIGN KEY (idArtista) REFERENCES Artista(id)
+    ON DELETE CASCADE;
+
+ALTER TABLE ArtistaContenido
+    ADD CONSTRAINT FK_ArtistaContenido_Contenido
+    FOREIGN KEY (codigoContenido) REFERENCES Contenido(codigo)
+    ON DELETE CASCADE;
+
+ALTER TABLE SubscripcionUsuario
+    ADD CONSTRAINT FK_SubscripcionUsuario_Subscripcion
+    FOREIGN KEY (idSubscripcion) REFERENCES Subscripcion(id)
+    ON DELETE CASCADE;
+
+ALTER TABLE SubscripcionUsuario
+    ADD CONSTRAINT FK_SubscripcionUsuario_Usuario
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
+    ON DELETE CASCADE;
+
+ALTER TABLE CuentaPrincipal
+    ADD CONSTRAINT FK_CuentaPrincipal_Usuario
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
+    ON DELETE CASCADE;
+
+ALTER TABLE Empleado
+    ADD CONSTRAINT FK_Empleado_Departamento
+    FOREIGN KEY (idDepartamento) REFERENCES Departamento(idDepartamento)
+    ON DELETE CASCADE;
+
 
 /*Checks*/
 
