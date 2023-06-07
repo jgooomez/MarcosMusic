@@ -43,7 +43,8 @@ CREATE TABLE Usuario (
 idUsuario INT IDENTITY (1,1),
 nacionalidad VARCHAR(100),
 nombre VARCHAR(100),
-fotoPerfil VARCHAR(100),
+userName VARCHAR(100),
+password VARCHAR(100),
 edad INT,
 numSeguidores INT,
 CONSTRAINT PK_Usuario PRIMARY KEY (idUsuario)
