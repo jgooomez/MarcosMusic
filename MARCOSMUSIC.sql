@@ -146,10 +146,6 @@ CREATE TABLE CuentaPrincipal (
     FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
 );
 
-
-
-/* NUEVAS TABLAS */
-
 CREATE TABLE Departamento (
     idDepartamento int PRIMARY KEY,
     nombre nvarchar(50),
@@ -168,6 +164,7 @@ CREATE TABLE Empleado (
     idDepartamento int,
     FOREIGN KEY (idDepartamento) REFERENCES Departamento(idDepartamento)
 );
+
 
 
 /*Checks*/
