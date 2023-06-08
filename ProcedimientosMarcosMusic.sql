@@ -358,30 +358,37 @@ BEGIN
 END
 
 --PROCEDIMIENTOS--
---Procedimiento para crear un departamento SOLO si no existe
+--Procedimiento para crear un departamento y verificar si se creo correctamente--
 CREATE PROCEDURE CrearDepartamento
-    @idDepartamento INT,
     @nombreDepartamento NVARCHAR(50),
     @fechaCreacion DATE,
     @nombreEncargado NVARCHAR(50),
     @numTrabajadores INT,
-    @numSubdepartamentos INT, @depCreado BIT OUT
+    @numSubdepartamentos INT,
+    @depCreado BIT OUTPUT
 AS
 BEGIN
-    -- Verificar si el departamento ya existe
-    IF EXISTS (SELECT 1 FROM Departamento WHERE idDepartamento = @idDepartamento)
+    -- Variable para verificar si el departamento se ha insertado correctamente
+    DECLARE @insertExitoso INT;
+
+    -- Insertar el nuevo departamento en la tabla Departamento
+    INSERT INTO Departamento (nombre, fechaCreacion, NombreEncargado, numTrabajadores, numSubDpto)
+    VALUES (@nombreDepartamento, @fechaCreacion, @nombreEncargado, @numTrabajadores, @numSubdepartamentos);
+
+    -- Obtener el número de filas afectadas para saber si se ha hecho el insert
+    SET @insertExitoso = @@ROWCOUNT;
+
+    -- Asignar el valor correspondiente a la variable de salida @depCreado
+    IF @insertExitoso > 0
     BEGIN
-        SET @depCreado = 1;
+        SET @depCreado = 0; -- Insert exitoso, devuelve 0
     END
     ELSE
     BEGIN
-        -- Insertar el nuevo departamento
-        INSERT INTO Departamento (idDepartamento, nombre, fechaCreacion, NombreEncargado, numTrabajadores, numSubDpto)
-        VALUES (@idDepartamento, @nombreDepartamento, @fechaCreacion, @nombreEncargado, @numTrabajadores, @numSubdepartamentos);
-        SET @depCreado = 0;
+        SET @depCreado = 1; -- Insert fallido, devuelve 1
     END
-	RETURN @depCreado;
 END
+
 
 --Procedimiento para eliminar un departamento SOLO si existe
 CREATE PROCEDURE dbo.EliminarDepartamentoSiExiste
