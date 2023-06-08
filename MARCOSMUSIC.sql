@@ -581,13 +581,13 @@ VALUES
 -- NUEVOS INSERTS
 
 -- Departamento
-INSERT INTO Departamento (idDepartamento, nombre, fechaCreacion, NombreEncargado, numTrabajadores, numSubDpto)
+INSERT INTO Departamento (nombre, fechaCreacion, NombreEncargado, numTrabajadores, numSubDpto)
 VALUES
-    (1, 'Atencion al Cliente', '2020-01-01', 'Encargado A', 10, 2),
-    (2, 'Sonido', '2019-05-15', 'Encargado B', 15, 3),
-    (3, 'Video', '2021-03-10', 'Encargado C', 8, 1),
-    (4, 'Redes sociales', '2018-11-30', 'Encargado D', 12, 2),
-    (5, 'Diseño', '2023-06-01', 'Encargado E', 20, 3);
+    ('Atencion al Cliente', '2020-01-01', 'Encargado A', 10, 2),
+    ('Sonido', '2019-05-15', 'Encargado B', 15, 3),
+    ('Video', '2021-03-10', 'Encargado C', 8, 1),
+    ('Redes sociales', '2018-11-30', 'Encargado D', 12, 2),
+    ('Diseño', '2023-06-01', 'Encargado E', 20, 3);
 
 -- Empleado
 INSERT INTO Empleado (nombre, edad, nacionalidad, fechaIncorporacion, idDepartamento)
@@ -612,4 +612,3 @@ VALUES
     ('Emma Kim', 26, 'Corea del Sur', '2018-12-05', 4),
     ('Lucas Santos', 30, 'Brasil', '2021-01-10', 5),
     ('Sophia Yin', 28, 'China', '2019-06-20', 5);
-
