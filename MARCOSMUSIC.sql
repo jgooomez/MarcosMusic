@@ -21,7 +21,7 @@ CONSTRAINT PK_Categoria PRIMARY KEY (codigo)
 CREATE TABLE Artista (
 id INT IDENTITY (1,1),
 nombre VARCHAR(100),
-fechaInicio DATE,
+fechaInicio VARCHAR(100),
 nacionalidad VARCHAR(100),
 numPremios INT,
 generoMusical VARCHAR(100),
