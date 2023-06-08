@@ -157,7 +157,7 @@ CONSTRAINT FK_CuentaPrincipal_Usuario FOREIGN KEY (idUsuario) REFERENCES Usuario
 );
 
 CREATE TABLE Departamento (
-idDepartamento INT,
+idDepartamento INT Identity (1,1),
 nombre NVARCHAR(50),
 fechaCreacion DATE,
 NombreEncargado NVARCHAR(50),
