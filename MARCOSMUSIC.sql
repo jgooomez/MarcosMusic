@@ -90,7 +90,7 @@ telefono VARCHAR(9),
 tipo VARCHAR(100),
 nombreTitular VARCHAR(100),
 cvv INT,
-caducidad DATE,
+caducidad VARCHAR(5),
 idUsuario INT,
 CONSTRAINT PK_Tarjeta PRIMARY KEY (numeroTarjeta),
 CONSTRAINT FK_Tarjeta_Usuario FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario) ON DELETE CASCADE
